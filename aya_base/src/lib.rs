@@ -1,4 +1,4 @@
-#![cfg_attr(not(any(std, test)), no_std)]
+#![cfg_attr(not(any(feature = "std", test)), no_std)]
 
 mod card;
 pub mod constants;

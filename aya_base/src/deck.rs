@@ -10,7 +10,7 @@ pub struct Deck {
 
 impl Deck {
     /// Creates a new deck containing the given cards shuffled by a random seed.
-    #[cfg(std)]
+    #[cfg(feature = "std")]
     pub fn new<'a>(cards: impl IntoIterator<Item = &'a Card>) -> Deck {
         let seed = fastrand::u64(..);
         Deck::with_seed(cards, seed)
@@ -74,7 +74,7 @@ pub struct FullDeck(Deck);
 
 impl FullDeck {
     /// Creates a new 52-card deck shuffled by a random seed.
-    #[cfg(std)]
+    #[cfg(feature = "std")]
     pub fn new() -> FullDeck {
         let deck = Deck::new(CARDS.iter());
         FullDeck(deck)
@@ -112,7 +112,7 @@ pub struct ShortDeck(Deck);
 
 impl ShortDeck {
     /// Creates a new 36 six-or-better-card deck shuffled by a random seed.
-    #[cfg(std)]
+    #[cfg(feature = "std")]
     pub fn new() -> ShortDeck {
         let six_plus_cards = CARDS.iter().filter(|&c| c.rank() >= Rank::Six);
         let deck = Deck::new(six_plus_cards);

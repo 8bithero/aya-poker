@@ -112,7 +112,7 @@
 //! }
 //! ```
 
-#![cfg_attr(not(any(std, test)), no_std)]
+#![cfg_attr(not(any(feature = "std", test)), no_std)]
 
 use quickdiv::DivisorU64;
 
